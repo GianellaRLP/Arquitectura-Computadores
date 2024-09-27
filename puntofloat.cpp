@@ -3,32 +3,26 @@
 #include <cmath>
 #include <string>
 
-std::string decimalToBinary(double decimal) 
-{
+std::string decimalToBinary(double decimal) {
     std::string binaryString;
-    for (int i = 0; i < 23 && decimal != 0; ++i) 
-    {
+    for (int i = 0; i < 23 && decimal != 0; ++i) {
         decimal *= 2;
         int bit = static_cast<int>(decimal);
         binaryString += std::to_string(bit);
         decimal -= bit;
     }
 
-    while (binaryString.length() < 23) 
-    {
+    while (binaryString.length() < 23) {
         binaryString += '0';
     }
-
     return binaryString;
 }
 
-std::bitset<8> enteroToBinary(int entero)
-{
+std::bitset<8> enteroToBinary(int entero){
     return std::bitset<8>(entero);
 }
 
-std::string IEET_ENTERO(int value)
-{
+std::string IEET_ENTERO(int value){
     std::string binaryString = std::bitset<8>(value).to_string();
 
     int leadingZeros = 0;
@@ -65,8 +59,7 @@ std::bitset<23> IEET_DECIMAL(std::bitset<8> value, std::bitset<23> BIT23)
     return BIT23;
 }
 
-std::bitset<8> MULTI_ENTERO(std::bitset<8> num1, std::bitset<8> num2, int simbolo) 
-{
+std::bitset<8> MULTI_ENTERO(std::bitset<8> num1, std::bitset<8> num2, int simbolo) {
     int sum1 = num1.to_ulong();
     int sum2 = num2.to_ulong();
     int sum = (sum1 + sum2) - 126;
@@ -82,8 +75,7 @@ std::bitset<8> MULTI_ENTERO(std::bitset<8> num1, std::bitset<8> num2, int simbol
     }
 }
 
-int LONGITUD_BITS23(std::bitset<23> bits) 
-{
+int LONGITUD_BITS23(std::bitset<23> bits) {
     std::string bitsString = bits.to_string();
     int count = 0;
     for (int i = bitsString.size() - 1; i >= 0; --i) {
@@ -93,8 +85,7 @@ int LONGITUD_BITS23(std::bitset<23> bits)
     return 23 - count;
 }
 
-int LONGITUD_BITS46(std::bitset<48> bits) 
-{
+int LONGITUD_BITS46(std::bitset<48> bits) {
     std::string bitsString = bits.to_string();
     int count = 0;
     for (int i = bitsString.size() - 1; i >= 0; --i) {
@@ -104,8 +95,7 @@ int LONGITUD_BITS46(std::bitset<48> bits)
     return 48 - count;
 }
 
-std::bitset<23> MULTI_DECIMAL(std::bitset<23> bits1,  std::bitset<23> bits2) 
-{
+std::bitset<23> MULTI_DECIMAL(std::bitset<23> bits1,  std::bitset<23> bits2) {
     int Long1 = LONGITUD_BITS23(bits1);
     int Long2 = LONGITUD_BITS23(bits2);
 
@@ -123,14 +113,12 @@ std::bitset<23> MULTI_DECIMAL(std::bitset<23> bits1,  std::bitset<23> bits2)
     return std::bitset<23>(result.to_string()) <<= (shifts - 1);
 }
 
-std::string multiplyDecimal(double decimal1, double decimal2) 
-{
+std::string multiplyDecimal(double decimal1, double decimal2) {
     double product = decimal1 * decimal2;
     return decimalToBinary(product);
 }
 
-int main() 
-{
+int main() {
     double Numero1;
     double Numero2;
 	
@@ -158,8 +146,7 @@ int main()
     double Decimal1 = Numero1 - Entero1;
     double Decimal2 = Numero2 - Entero2;
 
-    if (Entero1 == 0 || Entero2 == 0) 
-    {
+    if (Entero1 == 0 || Entero2 == 0) {
         std::cout << "Resultado: 0 00000000.00000000000000000000000\n";
     }
     else
