@@ -97,5 +97,5 @@ actualizar:
 done:
     move $v0, $t0                          # Mover el valor mínimo a $v0
     move $v1, $t1                          # Mover el índice del mínimo a $v1
-    jr $ra                                  # Retornar al llamador
-                       # Retornar al llamador
+    jr $ra                                 
+
