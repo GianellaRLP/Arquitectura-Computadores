@@ -1,6 +1,3 @@
-#	Cuando se hallan números repetidos y estos son los mayores en el array, 
-#   solo tomará al primero que encuentre en el array y considerará su posición. 
-#   Fuera el caso de que se hallen números repetidos y no sea los mayores entonces los ignorará
 
 
 .data
